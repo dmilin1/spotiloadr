@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Regular;
+  font-weight: 400;
+  src: url("./assets/fonts/CircularSp-Book.woff2");
+}
+
+@font-face {
+  font-family: Bold;
+  font-weight: 700;
+  src: url("./assets/fonts/CircularSp-Bold.woff2");
+}
+
+@font-face {
+  font-family: TitleBold;
+  font-weight: 700;
+  src: url("./assets/fonts/CircularSpTitle-Bold.woff2");
+}
+
+@font-face {
+  font-family: TitleBlack;
+  font-weight: 900;
+  src: url("./assets/fonts/CircularSpTitle-Black.woff2");
+}
+
+body {
+  font-family: Regular, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  caret-color: white;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 100%, .3);
+}
+
+audio {
+  max-width: 120px;
+}
+
+audio::-webkit-media-controls-panel {
+  background: #b3b3b3;
+  width: 30px;
+}
+audio::-webkit-media-controls-play-button {
+  margin-right: -15px;
+  margin-left: -10px;
+}
+audio::-webkit-media-controls-timeline {
+  width: 70px;
+}
+audio::-webkit-media-controls-mute-button {
+  display: none !important;
+}
+audio::-webkit-media-controls-timeline-container {
+  display: none !important;
+}
+audio::-webkit-media-controls-current-time-display {
+  display: none !important;
+}
+audio::-webkit-media-controls-time-remaining-display {
+  display: none !important;
+}
+audio::-webkit-media-controls-volume-slider-container {
+  display: none !important;
+}
+audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+audio::-webkit-media-controls-seek-back-button {
+  display: none !important;
+}
+audio::-webkit-media-controls-seek-forward-button {
+  display: none !important;
+}
+audio::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+audio::-webkit-media-controls-rewind-button {
+  display: none !important;
+}
+audio::-webkit-media-controls-return-to-realtime-button {
+  display: none !important;
+}
+audio::-webkit-media-controls-toggle-closed-captions-button {
+  display: none !important;
+}
