@@ -1,0 +1,71 @@
+diff --git a/node_modules/d-fi-core/dist/converter/spotify.js b/node_modules/d-fi-core/dist/converter/spotify.js
+index 626acc1..9bd6e70 100644
+--- a/node_modules/d-fi-core/dist/converter/spotify.js
++++ b/node_modules/d-fi-core/dist/converter/spotify.js
+@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.artist2Deezer = exports.playlist2Deezer = exports.album2deezer = exports.track2deezer = exports.setSpotifyAnonymousToken = exports.spotifyApi = void 0;
+ const axios_1 = __importDefault(require("axios"));
+-const spotify_web_api_node_1 = __importDefault(require("spotify-web-api-node"));
+ const p_queue_1 = __importDefault(require("p-queue"));
+ const deezer_1 = require("./deezer");
+ /**
+@@ -24,25 +23,10 @@ const getOffset = (next) => {
+  * Limit process concurrency
+  */
+ const queue = new p_queue_1.default({ concurrency: 25 });
+-/**
+- * Export core spotify module
+- */
+-exports.spotifyApi = new spotify_web_api_node_1.default();
+ /**
+  * Set spotify tokens anonymously. This is required to bypass api limits.
+  * @returns {tokensType}
+  */
+-const setSpotifyAnonymousToken = async () => {
+-    const { data } = await axios_1.default.get('https://open.spotify.com/get_access_token?reason=transport&productType=embed');
+-    exports.spotifyApi.setAccessToken(data.accessToken);
+-    return data;
+-};
+-exports.setSpotifyAnonymousToken = setSpotifyAnonymousToken;
+-/**
+- * Convert spotify songs to deezer
+- * @param {String} id Spotify track id
+- * @returns {trackType}
+- */
+ const track2deezer = async (id) => {
+     const { body } = await exports.spotifyApi.getTrack(id);
+     return await (0, deezer_1.isrc2deezer)(body.name, body.external_ids.isrc);
+diff --git a/node_modules/d-fi-core/dist/deezer/converter/spotify.js b/node_modules/d-fi-core/dist/deezer/converter/spotify.js
+index 626acc1..1d325bd 100644
+--- a/node_modules/d-fi-core/dist/deezer/converter/spotify.js
++++ b/node_modules/d-fi-core/dist/deezer/converter/spotify.js
+@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.artist2Deezer = exports.playlist2Deezer = exports.album2deezer = exports.track2deezer = exports.setSpotifyAnonymousToken = exports.spotifyApi = void 0;
+ const axios_1 = __importDefault(require("axios"));
+-const spotify_web_api_node_1 = __importDefault(require("spotify-web-api-node"));
+ const p_queue_1 = __importDefault(require("p-queue"));
+ const deezer_1 = require("./deezer");
+ /**
+@@ -24,20 +23,6 @@ const getOffset = (next) => {
+  * Limit process concurrency
+  */
+ const queue = new p_queue_1.default({ concurrency: 25 });
+-/**
+- * Export core spotify module
+- */
+-exports.spotifyApi = new spotify_web_api_node_1.default();
+-/**
+- * Set spotify tokens anonymously. This is required to bypass api limits.
+- * @returns {tokensType}
+- */
+-const setSpotifyAnonymousToken = async () => {
+-    const { data } = await axios_1.default.get('https://open.spotify.com/get_access_token?reason=transport&productType=embed');
+-    exports.spotifyApi.setAccessToken(data.accessToken);
+-    return data;
+-};
+-exports.setSpotifyAnonymousToken = setSpotifyAnonymousToken;
+ /**
+  * Convert spotify songs to deezer
+  * @param {String} id Spotify track id
